@@ -1,4 +1,7 @@
 {
+    "name": "exercice5/cinema",
+    "description": "Exercice 5",
+    "type": "project",
     "require": {
         "slim/slim": "^4.9",
         "slim/psr7": "^1.5",
