@@ -3,12 +3,12 @@ namespace App\Entity;
 
 class Cinema
 {
-    private int $id;
-    private string $name;
-    private string $city;
-    private string $numberStreet;
-    private string $codePost;
-    private int $operatorId;
+    private ?int $id = null;
+    private string $name = '';
+    private string $city = '';
+    private string $numberStreet = '';
+    private string $codePost = '';
+    private ?int $operatorId = null;
 
     public function getId(): int
     {
@@ -74,5 +74,17 @@ class Cinema
     {
         $this->operatorId = $operatorId;
         return $this;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'city' => $this->city,
+            'number_street' => $this->numberStreet,
+            'code_post' => $this->codePost,
+            'operator_id' => $this->operatorId
+        ];
     }
 }

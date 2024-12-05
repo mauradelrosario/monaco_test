@@ -1,19 +1,19 @@
 <?php
-namespace Controller;
+namespace App\Controller;
 
-use Repository\CinemaRepository;
-use Views\JsonView;
+use App\Repository\CinemaRepository;
 
 class CinemaController {
-    private $cinemaModel;
-    private $view;
+    private CinemaRepository $cinemaRepository;
 
     public function __construct($db) {
-        $this->cinemaModel = new CinemaRepository($db);
-        $this->view = new JsonView();
+        $this->cinemaRepository = new CinemaRepository($db);
     }
 
-    public function getCinemas() {
-        return $this->cinemaModel->getAll();
+    /**
+     * @throws \Exception
+     */
+    public function getCinemas(): array {
+        return $this->cinemaRepository->getAll();
     }
 }

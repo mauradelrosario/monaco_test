@@ -4,7 +4,7 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
     ports:
       - "80:80"
     volumes:
@@ -12,10 +12,10 @@ services:
     depends_on:
       - db
     environment:
-      DB_HOST: db
-      DB_NAME: cinema
-      DB_USER: cinema_user
-      DB_PASS: cinema_password
+      - DB_HOST=db
+      - DB_USER=cinema_user
+      - DB_PASS=cinema_password
+      - DB_NAME=cinema
 
   db:
     image: mysql:8.0

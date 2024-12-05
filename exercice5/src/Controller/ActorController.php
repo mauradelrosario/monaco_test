@@ -1,25 +1,17 @@
 <?php
-namespace Controller;
+namespace App\Controller;
 
-use Repository\ActorRepository;
-use Views\JsonView;
+use App\Repository\ActorRepository;
 
 class ActorController {
     private $actorModel;
-    private $view;
-
     public function __construct($db) {
         $this->actorModel = new ActorRepository($db);
-        $this->view = new JsonView();
     }
 
-    public function getActors() {
+    public function getActors():array {
         $firstName = $_GET['first_name'] ?? '';
-        $actors = $this->actorModel->getByFirstName($firstName);
-        $this->view->render($actors);
+        return $this->actorModel->getByFirstName($firstName);
     }
 
-    public function createSession($cinemaId, $movieId) {
-        // Logic for creating a session
-    }
 }
